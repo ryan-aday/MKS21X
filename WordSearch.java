@@ -371,8 +371,8 @@ public class WordSearch{
 	    if (this.addWord(row, col, w, rInc, cInc)==true){
 		addWord(row, col, w, rInc, cInc);
 		wordsAdded.add(w);
-		System.out.println(wordsAdded);
-		System.out.println(this.toString());
+		//System.out.println(wordsAdded);
+		//System.out.println(this.toString());
 		//System.out.println(row);
 		//System.out.println(col);
 		//System.out.println(rInc);
