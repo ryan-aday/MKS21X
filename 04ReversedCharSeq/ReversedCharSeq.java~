@@ -1,0 +1,58 @@
+
+/*
+public interface CharSequence{
+    char charAt(int index);
+    int length();
+    CharSequence subSequence(int start, int end);
+}
+*/
+
+
+public class RevCharSequence implements CharSequence{
+    private String data="";
+    
+    public static void main (String[]args){
+	RevCharSequence b = new RevCharSequence("hello");
+	System.out.println(b.toString());
+	System.out.println(b.charAt(3));
+	System.out.println(b.length());
+	System.out.println(b.subSequence(2, 4));
+    }
+
+    public RevCharSequence(){
+	data="";
+	System.out.println(data);
+    }
+
+    public RevCharSequence(String seq){
+	for (int ccount=seq.length(); ccount>0; ccount--){
+	    data=data.concat(seq.substring(ccount-1, ccount));
+	    System.out.println(data);
+
+	}
+	System.out.println(data);
+
+    }
+
+    public char charAt(int index){
+	if (index>-1 && index< data.length()){
+	    return data.charAt(index);
+	}else return '?';
+    }
+
+    public int length(){
+	return data.length();
+    }
+
+    public String toString(){
+	return data;
+    }
+
+    public CharSequence subSequence(int start, int end){
+	if (start>-1 && end< data.length()){
+	    data= data.substring(start, end+1);
+	    return data;
+	}else return "Invalid start or end";
+    }
+}
+
