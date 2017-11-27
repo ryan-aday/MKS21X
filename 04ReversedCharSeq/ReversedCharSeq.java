@@ -11,23 +11,18 @@ public class ReversedCharSeq implements CharSequence{
 
     public ReversedCharSeq(){
 	data="";
-	System.out.println(data);
     }
 
     public ReversedCharSeq(String seq){
 	for (int ccount=seq.length(); ccount>0; ccount--){
 	    data=data.concat(seq.substring(ccount-1, ccount));
-	    System.out.println(data);
-
 	}
-	System.out.println(data);
-
     }
 
     public char charAt(int index){
 	if (index>-1 && index< data.length()){
 	    return data.charAt(index);
-	}else return '?';
+	}throw new IndexOutOfBoundsException();
     }
 
     public int length(){
@@ -40,9 +35,10 @@ public class ReversedCharSeq implements CharSequence{
 
     public CharSequence subSequence(int start, int end){
 	if (start>-1 && end< data.length()){
-	    data= data.substring(start, end+1);
-	    return data;
-	}else return "Invalid start or end";
+	    if (start==end){
+		return "";
+	    }else return data.substring(start, end+1);
+	}throw new IndexOutOfBoundsException();
     }
 }
 
