@@ -1,0 +1,35 @@
+public class Barcode implements Comparable<String>{
+  public static void main(String[] args) {
+      a= BarCode(args[0]);
+      System.out.println(a.getZip());
+      System.out.println(a.getCode());
+  }
+
+  private String zip;
+  private String[] code= new String{":::||"; ":::||";  "::|:|";  "::||:"; ":|::|";
+	  ":|:|:"; ":||::"; "|:::|"; "|::|:"; "|:|::" };
+
+  public Barcode(String z){
+      int check=0;
+      int rep=0;
+      for (int count=0; count<z.length(); count++){
+	  check+= Integer.valueOf(zip.substring(count, count+1));
+      }
+      rep=Integer.valueOf(z)+check%10;
+      this.zip=Integer.toString(rep);
+  }
+  
+  public String getZip(){
+      return zip;
+  }
+  
+  public String getCode(){
+      String cd="[ "
+	  for (int count=0; count<zip.length(); count++){
+	      cd+= code[Integer.valueOf(zip[count])];
+	  }return cd;
+  }
+  
+  
+}
+
