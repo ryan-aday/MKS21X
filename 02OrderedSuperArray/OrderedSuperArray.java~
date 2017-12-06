@@ -1,0 +1,24 @@
+public class OrderedSuperArray extends SuperArray{
+
+  /*constructor initializes an empty List*/
+  public OrderedSuperArray(){
+    //Complete this.
+      super();
+  }
+
+  /*call the proper add.*/
+  public void add(int index, String value){
+    add(value);
+    set(index/2, value);
+  }
+
+  /*Write this method and any
+    appropriate helper methods.*/
+  public boolean add(String value){
+    //add to the correct spot.
+    //you may still use super.add(index,value)
+    return true;
+  }
+
+
+}
