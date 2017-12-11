@@ -3,7 +3,7 @@ public class Sorts{
   /**EDIT THIS METHOD TO MATCH YOUR NAME 
   */
   public static String name(){
-    return "01.Aday.Ryan"; 
+    return "10.Aday.Ryan"; 
   }
 
   /**Selection sort of an int array. 
@@ -21,6 +21,11 @@ public class Sorts{
         return true;                                                            
     }                                                                           
                                           
+    private static void swap(int[]ary,int a, int b){                            
+        int c =ary[a];                                                          
+        ary[a] = ary[b];                                                        
+        ary[b] = c;                                                             
+    }
 
     public static void bogoSort(int[] ary){                                    
         while(!isSorted(ary)){                                                
@@ -33,12 +38,6 @@ public class Sorts{
         }                                                                       
     }                                                                           
                                                                                 
-    private static void swap(int[]ary,int a, int b){                            
-        int c =ary[a];                                                          
-        ary[a] = ary[b];                                                        
-        ary[b] = c;                                                             
-    }
-
     public static void selectionSort(int[] data){
 	int min;
 	
@@ -56,7 +55,7 @@ public class Sorts{
 	for (int count=1; count < data.length; count++){
 	    int min=data[count];
 	    int comp=count-1;
-	    while(comp >=0  && data[comp]<min){
+	    while(comp >=0  && data[comp]>min){
 		data[comp+1]=data[comp];
 		comp--;
 	    }
@@ -64,20 +63,51 @@ public class Sorts{
 	}
     }
     
+    public static void bubbleSort(int[] data){
+	int currentIndex, cutoff, swapCount;
+	swapCount=0;	
+	for (int count=0; count<data.length-1; count++){
+	    cutoff=count;
+	    
+	    for (int check=0; check<data.length-cutoff-1; check++){
+		currentIndex=check;
+		if (data[currentIndex]>data[currentIndex+1]){
+		    swap(data, check, check+1);
+		    swapCount++;
+		}
+	    }
+	    if (swapCount==0){
+		System.exit(0);
+	    }
+	}
+    }
+					     
     public static void main(String[]artie){                                    
         int[] randish = new int[5];                                            
-        for(int i = 0 ; i < randish.length; i++){                               
+        
+	for(int i = 0 ; i < randish.length; i++){                               
             randish[i] =(int)(Math.random()*100);                               
         }
+
 	System.out.println(Arrays.toString(randish));
-	swap(randish, 0, 1);
-        System.out.println(Arrays.toString(randish));                           
-             bogoSort(randish);
-	System.out.println(Arrays.toString(randish));                         
+	///swap testing
+	//swap(randish, 0, 1);
+        //System.out.println(Arrays.toString(randish));   
+  
+	//bogoSort testing
+	//bogoSort(randish);
+	//System.out.println(Arrays.toString(randish));   
+
+	//selectionSort testing
+	//selectionSort(randish);
+	//System.out.println(Arrays.toString(randish));
+
+	//insertionSort testing
         //insertionSort(randish);
-        System.out.println(Arrays.toString(randish));                         
-	//	selectionSort(randish);
-	System.out.println(Arrays.toString(randish));    
+        //System.out.println(Arrays.toString(randish));    
+
+	//bubbleSort testing
+	//bubbleSort(randish);
+	//System.out.println(Arrays.toString(randish));    
     }                                                            
-}                                                                               
-                                                       
+}                                 
