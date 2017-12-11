@@ -83,14 +83,33 @@ public class Sorts{
     }
 					     
     public static void main(String[]artie){                                    
-        int[] randish = new int[5];                                            
+        int[] randish = new int[10];
         
 	for(int i = 0 ; i < randish.length; i++){                               
             randish[i] =(int)(Math.random()*100);                               
         }
 
 	System.out.println(Arrays.toString(randish));
-	///swap testing
+	try{
+	    if (artie[0].equals("1")){
+		bogoSort(randish);
+		System.out.println(Arrays.toString(randish));
+	    }else if (artie[0].equals("2")){
+		bogoSort(randish);
+		System.out.println(Arrays.toString(randish));
+	    } else if (artie[0].equals("3")){
+		bogoSort(randish);
+		System.out.println(Arrays.toString(randish));
+	    }else if (artie[0].equals("4")){
+		bogoSort(randish);
+		System.out.println(Arrays.toString(randish));
+	    }else System.out.println(Arrays.toString(randish)+"\n No artie input from 1-4");
+	}
+	catch(ArrayIndexOutOfBoundsException e){
+	    System.out.println("No artie input\n"+Arrays.toString(randish)+"\n");
+	}
+
+	//swap testing
 	//swap(randish, 0, 1);
         //System.out.println(Arrays.toString(randish));   
   
