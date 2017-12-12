@@ -1,6 +1,16 @@
+import java.awt.image.BufferedImage;
 import javax.swing.*;
 import java.awt.*;
-public class Window2 extends JFrame {
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+//import javax.swing.ImageIcon;
+//import javax.swing.JLabel;
+//import javax.swing.JOptionPane;
+
+public class Go extends JFrame {
     private Container pane;
 
     private ImageIcon logo;
@@ -10,20 +20,25 @@ public class Window2 extends JFrame {
     private JTextField t;
     private JCheckBox c;
 
-    public void DisplayGUI(){
-	
-
-    public Go() {
+    public void Go() {
 	this.setTitle("Go: The Game");
 	this.setSize(600,400);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     
-	pane = this.getContentPane()
+	pane = this.getContentPane();
 	pane.setLayout(new FlowLayout());  //NOTE!! THIS CAN BE CHANGED (see below)
 	
-	logo=new(ImageIcon(getClass().getResource("go_logo.png")
+	try{
+	    BufferedImage img = ImageIO.read(new File("./go_logo.png"));
+	    logo = new ImageIcon(img);
+	    JLabel logoDisp= new JLabel(logo);
+	    pane.add(logoDisp);
+	}
 
+	catch(IOException ie){
+	    System.out.println("Error reading logo img file");
+	}
 
 	b = new JButton("Do Nothing");
 	l = new JLabel("This is AWESOME! (lies)",null,JLabel.CENTER);
@@ -37,7 +52,7 @@ public class Window2 extends JFrame {
     
     //MAIN JUST INSTANTIATES + MAKE VISIBLE
     public static void main(String[] args) {
-	Window2 g = new Window2();
+	Go g = new Go();
 	g.setVisible(true);
     }
 }
