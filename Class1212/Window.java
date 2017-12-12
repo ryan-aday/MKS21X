@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.*;
+
 public class Window extends JFrame {
     public Window() {
         this.setTitle("My first GUI");
