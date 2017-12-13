@@ -27,7 +27,7 @@ public class TemperatureConverter{
 	String s= e.getActionCommand();
 	System.out.println(s);
 	if (c.isSelected() && b.equals("Submit"){
-		
+		System.out.println(
     }
     
     public TemperatureConverter(){
