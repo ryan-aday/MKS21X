@@ -1,0 +1,24 @@
+public TemperatureConverter{
+    private static  int temp;
+
+    public static void main(String[args]){
+	try{
+	    if (args[1].equals("true")){
+		System.out.println(FTC(args[0]));
+	    }else System.out.println(CTF(args[0]));
+	}
+	catch (ArrayIndexOutOfBoundsException e){
+	    System.out.println("Fields nnot inputed");
+	}
+    }	
+
+    public float FTC(int f){
+	System.out.println(f+ " in Fahrenheit to:");
+	return (f-32)*(5/9);
+    }	
+
+    public float CTF(int c){
+	System.out.println(c+ " in Celcius to:");
+	return (9/5*c)+32;
+    }	    
+}  
