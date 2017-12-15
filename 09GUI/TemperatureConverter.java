@@ -4,9 +4,13 @@ import java.awt.event.*;
 
 public class TemperatureConverter extends JFrame implements ActionListener{
     private Container pane;
-    private JButton b;
-    private JTextField t;
-    private JCheckBox c;
+    // private JButton b;
+    private JTextField input;
+    private JTextField output;
+
+    private ButtonGroup conversions = new ButtonGroup();
+    private JRadioButton FC;
+    private JRadioButton CF;
     
 
     public TemperatureConverter(){
@@ -18,18 +22,28 @@ public class TemperatureConverter extends JFrame implements ActionListener{
         pane = this.getContentPane();
         pane.setLayout(new FlowLayout());
 
-        b = new JButton("Submit");
-        t = new JTextField(20);
-	c = new JCheckBox("FTC?");
+        //b = new JButton("Submit");
+        input = new JTextField(20);
+	FC = new JRadioButton("Fahrenheit to Celcius");
+	CF = new JRadioButton("Celcius to Fahrenheit");
+	output= new JTextField(20);
 
-	pane.add(t);
-	t.addActionListener(this);
+	pane.add(input);
+	//input.setText("Please input a number:");
+	input.addActionListener(this);
 	
-        pane.add(b);
-	b.addActionListener(this);
+        pane.add(FC);
+	FC.addActionListener(this);
+
+	pane.add(CF);
+	CF.addActionListener(this);
+
+	conversions.add(FC);
+	conversions.add(CF);
 	
-        pane.add(c);
-	c.addActionListener(this);
+        pane.add(output);
+	//	output.setText("Answer:");
+	output.addActionListener(this);
     }
 
 
@@ -40,12 +54,16 @@ public class TemperatureConverter extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
 	String s= e.getActionCommand();
-	System.out.println(s);
-	if (c.isSelected() && s.equals("Submit")){
-		System.out.println(this.FtoC(Double.parseDouble(t.getText())));
-	    }else if (s.equals("Submit")){
-		System.out.println(this.CtoF(Double.parseDouble(t.getText())));
-	    }else System.out.println("Impossible value to reach");
+	//System.out.println(s);
+	try {
+	    if (FC.isSelected()){
+		output.setText(Double.toString(FtoC(Double.parseDouble(input.getText())))+ " C");
+	    }else if (CF.isSelected()){
+		output.setText(Double.toString(CtoF(Double.parseDouble(input.getText())))+ " F");
+	    }
+	}catch(NumberFormatException nfe){
+	    output.setText("Missing numbers for input");
+	}
     }
     
     public static double FtoC(double f){
