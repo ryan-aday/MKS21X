@@ -1,9 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.*;
+import java.awt.event.*;
 
-
-public class TemperatureConverter extends JFrame{
+public class TemperatureConverter extends JFrame implements ActionListener{
     private Container pane;
     private JButton b;
     private JTextField t;
@@ -24,8 +23,13 @@ public class TemperatureConverter extends JFrame{
 	c = new JCheckBox("FTC?");
 
 	pane.add(t);
+	t.addActionListener(this);
+	
         pane.add(b);
+	b.addActionListener(this);
+	
         pane.add(c);
+	c.addActionListener(this);
     }
 
 
@@ -33,35 +37,22 @@ public class TemperatureConverter extends JFrame{
 	TemperatureConverter a= new TemperatureConverter();
 	a.setVisible(true);
     }
-	/*
-	try{
-	    if (args[1].equals("ftc")){
-		System.out.println(a.FtoC(Double.parseDouble(args[0])));
-	    }else System.out.println(a.CtoF(Double.parseDouble(args[0])));
-	}
-	catch (ArrayIndexOutOfBoundsException e){
-	    System.out.println("Fields not inputed");
-	}
-	*/
 
-    /*public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e){
 	String s= e.getActionCommand();
 	System.out.println(s);
-	if (c.isSelected() && b.equals("Submit")){
+	if (c.isSelected() && s.equals("Submit")){
 		System.out.println(this.FtoC(Double.parseDouble(t.getText())));
-	    }else if (b.equals("Submit")){
+	    }else if (s.equals("Submit")){
 		System.out.println(this.CtoF(Double.parseDouble(t.getText())));
 	    }else System.out.println("Impossible value to reach");
     }
-    */
     
     public static double FtoC(double f){
-	System.out.println(f+ " in Fahrenheit to:");
 	return (f-32)*5/9;
     }	
 
     public static double CtoF(double cel){
-	System.out.println(cel+ " in Celcius to:");
 	return ((9/5)*cel)+32;
     }	    
-}  
+}
