@@ -77,7 +77,7 @@ public class Sorts{
 		}
 	    }
 	    if (swapCount==0){
-		System.exit(0);
+		count=data.length-1;
 	    }
 	}
     }
