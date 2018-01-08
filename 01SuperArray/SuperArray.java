@@ -17,6 +17,10 @@ public class SuperArray{
 	data= new String[startingCapacity];
 	size=0;
     }
+
+    public SuperArray(String[] elements){
+	data= elements;
+    }
  
     //2
     public void clear(){
